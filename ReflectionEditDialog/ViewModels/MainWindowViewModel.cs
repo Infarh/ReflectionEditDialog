@@ -12,6 +12,7 @@ namespace ReflectionEditDialog.ViewModels
     internal class MainWindowViewModel : ViewModel
     {
         private readonly IEmployeesManager _EmployeesManager;
+        private readonly IUserDialog _UserDialog;
 
         #region Title : string - Заголовок окна
 
@@ -81,7 +82,9 @@ namespace ReflectionEditDialog.ViewModels
         /// <summary>Логика выполнения - Редактировать сотрудника</summary>
         private void OnEditEmployeeCommandExecuted(object p)
         {
-            var employee = p as Employee;
+            var employee = p as Employee ?? new Employee();
+
+            _UserDialog.Edit(employee);
         }
 
         #endregion
@@ -97,6 +100,10 @@ namespace ReflectionEditDialog.ViewModels
 
         #endregion
 
-        public MainWindowViewModel(IEmployeesManager Employees) => _EmployeesManager = Employees;
+        public MainWindowViewModel(IEmployeesManager Employees, IUserDialog UserDialog)
+        {
+            _EmployeesManager = Employees;
+            _UserDialog = UserDialog;
+        }
     }
 }

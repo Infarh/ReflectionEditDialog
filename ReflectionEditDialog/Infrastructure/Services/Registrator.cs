@@ -10,6 +10,7 @@ namespace ReflectionEditDialog.Infrastructure.Services
            .AddScoped<IRepository<Employee>, EmployeesRepository>()
            .AddScoped<IRepository<Department>, DepartmentsRepository>()
            .AddScoped<IEmployeesManager, EmployeesManager>()
+           .AddTransient<IUserDialog, AppWindowUserDialog>()
         ;
     }
 }
