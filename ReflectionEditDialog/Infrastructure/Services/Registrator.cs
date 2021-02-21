@@ -8,7 +8,7 @@ namespace ReflectionEditDialog.Infrastructure.Services
     {
         public static IServiceCollection AddServices(this IServiceCollection services) => services
            .AddScoped<IRepository<Employee>, EmployeesRepository>()
-           .AddScoped<IRepository<Departament>, DepartmentsRepository>()
+           .AddScoped<IRepository<Department>, DepartmentsRepository>()
            .AddScoped<IEmployeesManager, EmployeesManager>()
         ;
     }

@@ -7,8 +7,8 @@ namespace ReflectionEditDialog.Infrastructure.Services
 {
     internal class EmployeesRepository : DbRepository<Employee>
     {
-        public override IQueryable<Employee> Items => Set.Include(e => e.Departament);
+        public override IQueryable<Employee> Items => Set.Include(e => e.Department);
 
-        public EmployeesRepository(EmployeesDB db) : base(db) { }
+        public EmployeesRepository(IDbContextFactory<EmployeesDB> db) : base(db) { }
     }
 }

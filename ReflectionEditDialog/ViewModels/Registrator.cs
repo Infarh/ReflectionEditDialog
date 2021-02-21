@@ -5,7 +5,7 @@ namespace ReflectionEditDialog.ViewModels
     internal static class Registrator
     {
         public static void AddViewModels(this IServiceCollection services) => services
-           .AddSingleton<MainWindowViewModel>()
+           .AddScoped<MainWindowViewModel>()
         ;
     }
 }

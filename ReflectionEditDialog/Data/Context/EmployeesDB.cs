@@ -12,7 +12,7 @@ namespace ReflectionEditDialog.Data.Context
     {
         public DbSet<Employee> Employees { get; set; }
 
-        public DbSet<Departament> Departaments { get; set; }
+        public DbSet<Department> Departments { get; set; }
 
         public EmployeesDB(DbContextOptions<EmployeesDB> options) : base(options) { }
 
@@ -21,15 +21,15 @@ namespace ReflectionEditDialog.Data.Context
             base.OnModelCreating(model);
 
             var deps = Enumerable.Range(1, 10)
-               .Select(i => new Departament { Id = i, Name = $"Отдел {i}" })
+               .Select(i => new Department { Id = i, Name = $"Отдел {i}" })
                .ToArray();
 
-            model.Entity<Departament>().HasIndex(d => d.Name);
-            model.Entity<Departament>()
+            model.Entity<Department>().HasIndex(d => d.Name);
+            model.Entity<Department>()
                .HasMany(d => d.Employees)
-               .WithOne(e => e.Departament)
+               .WithOne(e => e.Department)
                .OnDelete(DeleteBehavior.Cascade);
-            model.Entity<Departament>().HasData(deps);
+            model.Entity<Department>().HasData(deps);
 
             var rnd = new Random();
             var empls = Enumerable.Range(1, 100)

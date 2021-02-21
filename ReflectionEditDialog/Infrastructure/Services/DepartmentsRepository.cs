@@ -5,10 +5,10 @@ using ReflectionEditDialog.Data.Entityes;
 
 namespace ReflectionEditDialog.Infrastructure.Services
 {
-    internal class DepartmentsRepository : DbRepository<Departament>
+    internal class DepartmentsRepository : DbRepository<Department>
     {
-        public override IQueryable<Departament> Items => Set.Include(e => e.Employees);
+        public override IQueryable<Department> Items => Set.Include(e => e.Employees);
 
-        public DepartmentsRepository(EmployeesDB db) : base(db) { }
+        public DepartmentsRepository(IDbContextFactory<EmployeesDB> db) : base(db) { }
     }
 }

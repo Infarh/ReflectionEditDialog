@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using ReflectionEditDialog.Data.Context;
 using ReflectionEditDialog.Data.Entityes.Base;
@@ -6,7 +7,7 @@ using ReflectionEditDialog.Infrastructure.Services.Interfaces;
 
 namespace ReflectionEditDialog.Infrastructure.Services
 {
-    internal class DbRepository<T> : IRepository<T> where T : Entity, new()
+    internal class DbRepository<T> : IRepository<T>, IDisposable where T : Entity, new()
     {
         private readonly EmployeesDB _db;
 
@@ -16,10 +17,10 @@ namespace ReflectionEditDialog.Infrastructure.Services
 
         public bool AutoSaveChanges { get; set; } = true;
 
-        public DbRepository(EmployeesDB db)
+        public DbRepository(IDbContextFactory<EmployeesDB> db)
         {
-            _db = db;
-            Set = db.Set<T>();
+            _db = db.CreateDbContext();
+            Set = _db.Set<T>();
         }
 
         public T Get(int id) => Items is DbSet<T> set ? set.Find(id) : Items.FirstOrDefault(e => e.Id == id);
@@ -49,6 +50,14 @@ namespace ReflectionEditDialog.Infrastructure.Services
             if (AutoSaveChanges)
                 _db.SaveChanges();
             return true;
+        }
+
+        public void Dispose() => Dispose(true);
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposing) return;
+            _db?.Dispose();
         }
     }
 }

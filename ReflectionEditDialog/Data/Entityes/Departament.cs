@@ -3,7 +3,7 @@ using ReflectionEditDialog.Data.Entityes.Base;
 
 namespace ReflectionEditDialog.Data.Entityes
 {
-    public class Departament : NamedEntity
+    public class Department : NamedEntity
     {
         public ICollection<Employee> Employees { get; set; }
     }

@@ -13,6 +13,6 @@ namespace ReflectionEditDialog.Data.Entityes
 
         public int DepartamentId { get; set; }
 
-        public Departament Departament { get; set; }
+        public Department Department { get; set; }
     }
 }

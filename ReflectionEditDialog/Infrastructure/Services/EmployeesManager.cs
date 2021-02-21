@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using ReflectionEditDialog.Data.Entityes;
 using ReflectionEditDialog.Infrastructure.Services.Interfaces;
 
@@ -9,13 +10,13 @@ namespace ReflectionEditDialog.Infrastructure.Services
     internal class EmployeesManager : IEmployeesManager
     {
         private readonly IRepository<Employee> _Employees;
-        private readonly IRepository<Departament> _Departments;
+        private readonly IRepository<Department> _Departments;
 
-        public IEnumerable<Departament> Departments => _Departments.Items;
+        public IEnumerable<Department> Departments => _Departments.Items;
 
         public IEnumerable<Employee> Employees => _Employees.Items;
 
-        public EmployeesManager(IRepository<Employee> Employees, IRepository<Departament> Departments)
+        public EmployeesManager(IRepository<Employee> Employees, IRepository<Department> Departments)
         {
             _Employees = Employees;
             _Departments = Departments;
@@ -23,16 +24,13 @@ namespace ReflectionEditDialog.Infrastructure.Services
 
         public Employee AddEmployee(string Name, string LastName, string Patronymic, DateTime Birthday, string Departament)
         {
-            if (_Departments.Items.FirstOrDefault(e => e.Name == Departament) is not { } departament)
-                _Departments.Add(departament = new Departament {Name = Departament});
-
             var employee = new Employee
             {
                 Name = Name,
                 LastName = LastName,
                 Patronymic = Patronymic,
                 Birthday = Birthday,
-                Departament = departament
+                Department = AddDepartment(Departament)
             };
 
             _Employees.Add(employee);
@@ -40,16 +38,15 @@ namespace ReflectionEditDialog.Infrastructure.Services
             return employee;
         }
 
-        public Employee ChangeDepartament(Employee employee, string Departament)
+        public Employee ChangeDepartment(Employee employee, string Department)
         {
-            if (_Departments.Items.FirstOrDefault(e => e.Name == Departament) is not { } departament)
-                _Departments.Add(departament = new Departament { Name = Departament });
-
-            employee.Departament = departament;
-
-            _Employees.Update(employee);
-
-            return employee;
+            employee.Department = AddDepartment(Department);
+            return _Employees.Update(employee);
         }
+
+        public Department AddDepartment(string Name) =>
+            _Departments.Items.FirstOrDefault(d => d.Name == Name) is { } departament
+                ? departament
+                : _Departments.Add(new Department { Name = Name });
     }
 }
