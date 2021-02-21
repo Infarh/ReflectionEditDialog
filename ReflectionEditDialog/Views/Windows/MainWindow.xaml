@@ -51,7 +51,7 @@
                     <Button Content="Редактировать"/>
                     <Button Content="Удалить"/>
                 </UniformGrid>
-                <ListBox ItemsSource="{Binding SelectedDepartment.Employees}">
+                <ListBox ItemsSource="{Binding SelectedDepartment.Employees}" SelectedItem="{Binding SelectedEmployee}">
                     <ListBox.ItemContainerStyle>
                         <Style TargetType="ListBoxItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>

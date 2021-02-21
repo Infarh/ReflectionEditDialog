@@ -34,6 +34,16 @@ namespace ReflectionEditDialog.ViewModels
 
         #endregion
 
+        #region SelectedEmployee : Employee - Выбранный сотрудник
+
+        /// <summary>Выбранный сотрудник</summary>
+        private Employee _SelectedEmployee;
+
+        /// <summary>Выбранный сотрудник</summary>
+        public Employee SelectedEmployee { get => _SelectedEmployee; set => Set(ref _SelectedEmployee, value); }
+
+        #endregion
+
 
         private ICommand _LoadDataCommand;
 
