@@ -1,7 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
+
 using ReflectionEditDialog.Data;
 using ReflectionEditDialog.Infrastructure.Commands;
+using ReflectionEditDialog.Infrastructure.Services.Interfaces;
 using ReflectionEditDialog.Models;
 using ReflectionEditDialog.ViewModels.Base;
 
@@ -9,6 +11,8 @@ namespace ReflectionEditDialog.ViewModels
 {
     internal class MainWindowViewModel : ViewModel
     {
+        private readonly IUserDialog _UserDialog;
+
         #region Title : string - Заголовок окна
 
         /// <summary>Заголовок окна</summary>
@@ -57,7 +61,7 @@ namespace ReflectionEditDialog.ViewModels
         private void OnLoadDataCommandExecuted(object p)
         {
             Departments = new ObservableCollection<Department>(TestData.Departments);
-        } 
+        }
 
         #endregion
 
@@ -76,7 +80,7 @@ namespace ReflectionEditDialog.ViewModels
         /// <summary>Логика выполнения - Создание нового сотрудника</summary>
         private void OnCreateEmployeeCommandExecuted(object p)
         {
-            
+
         }
 
         #endregion
@@ -91,12 +95,21 @@ namespace ReflectionEditDialog.ViewModels
             ??= new LambdaCommand(OnEditEmployeeCommandExecuted, CanEditEmployeeCommandExecute);
 
         /// <summary>Проверка возможности выполнения - Редактирование сотрудника</summary>
-        private bool CanEditEmployeeCommandExecute(object p) => true;
+        private bool CanEditEmployeeCommandExecute(object p) => p is Employee;
 
         /// <summary>Логика выполнения - Редактирование сотрудника</summary>
         private void OnEditEmployeeCommandExecuted(object p)
         {
-            
+            var employee = (Employee)p;
+            if(_UserDialog.Edit(employee))
+            {
+                // Сохранить employee в БД
+                // Обновить состояние интерфейса
+            }
+            else
+            {
+                // Ничего не делаем
+            }
         }
 
         #endregion
@@ -112,24 +125,24 @@ namespace ReflectionEditDialog.ViewModels
 
         /// <summary>Проверка возможности выполнения - Удаление сотрудника</summary>
         private bool CanRemoveEmployeeCommandExecute(object p) =>
-            p is Employee employee 
-            && SelectedDepartment != null 
+            p is Employee employee
+            && SelectedDepartment != null
             && SelectedDepartment.Employees.Contains(employee);
 
         /// <summary>Логика выполнения - Удаление сотрудника</summary>
         private void OnRemoveEmployeeCommandExecuted(object p)
         {
             var dep = SelectedDepartment;
-            dep.Employees.Remove((Employee) p);
+            dep.Employees.Remove((Employee)p);
             SelectedDepartment = null;
             SelectedDepartment = dep;
         }
 
         #endregion
 
-        public MainWindowViewModel(/* Сервис управления сотрудниками */)
+        public MainWindowViewModel(IUserDialog UserDialog /*, Сервис управления сотрудниками */)
         {
-            
+            _UserDialog = UserDialog;
         }
     }
 }

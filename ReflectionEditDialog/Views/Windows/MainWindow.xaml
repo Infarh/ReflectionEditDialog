@@ -6,7 +6,6 @@
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:l="clr-namespace:ReflectionEditDialog"
         xmlns:m="clr-namespace:ReflectionEditDialog.Models"
-        Topmost="True"
         Title="{Binding Title}" 
         DataContext="{Binding MainModel, Source={StaticResource Locator}}"
         Width="800" Height="450">
@@ -48,7 +47,7 @@
                         </Style>
                     </UniformGrid.Resources>
                     <Button Content="Добавить"/>
-                    <Button Content="Редактировать"/>
+                    <Button Content="Редактировать" Command="{Binding EditEmployeeCommand}" CommandParameter="{Binding SelectedEmployee}"/>
                     <Button Content="Удалить" Command="{Binding RemoveEmployeeCommand}" CommandParameter="{Binding SelectedEmployee}"/>
                 </UniformGrid>
                 <ListBox ItemsSource="{Binding SelectedDepartment.Employees}" SelectedItem="{Binding SelectedEmployee}">
