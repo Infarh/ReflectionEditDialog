@@ -3,11 +3,27 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" mc:Ignorable="d"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:l="clr-namespace:ReflectionEditDialog"
         Title="{Binding Title}" 
         DataContext="{Binding MainModel, Source={StaticResource Locator}}"
         Width="800" Height="450">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadDataCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" MinWidth="160"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Grid.Column="0" Header="Отделы">
+            <ListBox ItemsSource="{Binding Departments}" DisplayMemberPath="Name"/>
+        </GroupBox>
+        <GroupBox Grid.Column="1" Header="Сотрудники">
+            <ListBox/>
+        </GroupBox>
 
     </Grid>
 </Window>

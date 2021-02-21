@@ -23,7 +23,7 @@ namespace ReflectionEditDialog
         public static IServiceProvider Services => Hosting.Services;
 
         public static IHostBuilder CreateHostBuilder(string[] args) => Host.CreateDefaultBuilder(args)
-           .ConfigureAppConfiguration(opt => opt.AddJsonFile("appsettings.json", false, true))
+           .ConfigureAppConfiguration(opt => opt.AddJsonFile("appsettings.json", true, true))
            .ConfigureServices(ConfigureServices);
 
         private static void ConfigureServices(HostBuilderContext host, IServiceCollection services)

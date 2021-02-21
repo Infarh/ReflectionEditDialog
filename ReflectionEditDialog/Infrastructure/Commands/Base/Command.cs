@@ -11,7 +11,7 @@ namespace ReflectionEditDialog.Infrastructure.Commands.Base
             remove => CommandManager.RequerySuggested -= value;
         }
 
-        bool ICommand.CanExecute(object parameter) { throw new NotImplementedException(); }
+        bool ICommand.CanExecute(object parameter) => CanExecute(parameter);
 
         void ICommand.Execute(object parameter)
         {
