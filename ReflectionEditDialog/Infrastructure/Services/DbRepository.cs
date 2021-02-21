@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using ReflectionEditDialog.Data.Context;
 using ReflectionEditDialog.Data.Entityes.Base;
-using ReflectionEditDialog.Infrastructure.Servcies.Interfaces;
+using ReflectionEditDialog.Infrastructure.Services.Interfaces;
 
-namespace ReflectionEditDialog.Infrastructure.Servcies
+namespace ReflectionEditDialog.Infrastructure.Services
 {
     internal class DbRepository<T> : IRepository<T> where T : Entity, new()
     {

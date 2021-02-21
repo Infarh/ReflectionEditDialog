@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using ReflectionEditDialog.Data.Entityes.Base;
 
-namespace ReflectionEditDialog.Infrastructure.Servcies.Interfaces
+namespace ReflectionEditDialog.Infrastructure.Services.Interfaces
 {
     internal interface IRepository<T> where T : Entity
     {

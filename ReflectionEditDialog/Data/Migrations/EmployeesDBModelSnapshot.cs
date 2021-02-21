@@ -28,9 +28,11 @@ namespace ReflectionEditDialog.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Name");
 
                     b.ToTable("Departaments");
 
@@ -101,18 +103,20 @@ namespace ReflectionEditDialog.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Patronymic")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("DepartamentId");
+
+                    b.HasIndex("Name", "LastName", "Patronymic", "Birthday");
 
                     b.ToTable("Employees");
 
@@ -120,8 +124,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 1,
-                            Birthday = new DateTime(2000, 2, 21, 12, 11, 28, 318, DateTimeKind.Local).AddTicks(8335),
-                            DepartamentId = 5,
+                            Birthday = new DateTime(1992, 2, 21, 12, 42, 2, 740, DateTimeKind.Local).AddTicks(4457),
+                            DepartamentId = 10,
                             LastName = "Фамилия 1",
                             Name = "Имя 1",
                             Patronymic = "Отчество 1"
@@ -129,8 +133,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 2,
-                            Birthday = new DateTime(1988, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(8830),
-                            DepartamentId = 9,
+                            Birthday = new DateTime(1993, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8737),
+                            DepartamentId = 6,
                             LastName = "Фамилия 2",
                             Name = "Имя 2",
                             Patronymic = "Отчество 2"
@@ -138,8 +142,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 3,
-                            Birthday = new DateTime(2003, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(8863),
-                            DepartamentId = 10,
+                            Birthday = new DateTime(1991, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8772),
+                            DepartamentId = 7,
                             LastName = "Фамилия 3",
                             Name = "Имя 3",
                             Patronymic = "Отчество 3"
@@ -147,8 +151,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 4,
-                            Birthday = new DateTime(1987, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(8869),
-                            DepartamentId = 9,
+                            Birthday = new DateTime(1990, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8781),
+                            DepartamentId = 8,
                             LastName = "Фамилия 4",
                             Name = "Имя 4",
                             Patronymic = "Отчество 4"
@@ -156,8 +160,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 5,
-                            Birthday = new DateTime(1991, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(8874),
-                            DepartamentId = 8,
+                            Birthday = new DateTime(1993, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8785),
+                            DepartamentId = 4,
                             LastName = "Фамилия 5",
                             Name = "Имя 5",
                             Patronymic = "Отчество 5"
@@ -165,7 +169,7 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 6,
-                            Birthday = new DateTime(1998, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(8880),
+                            Birthday = new DateTime(2000, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8790),
                             DepartamentId = 3,
                             LastName = "Фамилия 6",
                             Name = "Имя 6",
@@ -174,8 +178,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 7,
-                            Birthday = new DateTime(1992, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(8885),
-                            DepartamentId = 1,
+                            Birthday = new DateTime(1990, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8796),
+                            DepartamentId = 2,
                             LastName = "Фамилия 7",
                             Name = "Имя 7",
                             Patronymic = "Отчество 7"
@@ -183,8 +187,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 8,
-                            Birthday = new DateTime(2001, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(8890),
-                            DepartamentId = 8,
+                            Birthday = new DateTime(2001, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8800),
+                            DepartamentId = 5,
                             LastName = "Фамилия 8",
                             Name = "Имя 8",
                             Patronymic = "Отчество 8"
@@ -192,8 +196,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 9,
-                            Birthday = new DateTime(1988, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(8894),
-                            DepartamentId = 3,
+                            Birthday = new DateTime(2002, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8804),
+                            DepartamentId = 9,
                             LastName = "Фамилия 9",
                             Name = "Имя 9",
                             Patronymic = "Отчество 9"
@@ -201,8 +205,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 10,
-                            Birthday = new DateTime(2002, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(8899),
-                            DepartamentId = 2,
+                            Birthday = new DateTime(2003, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8809),
+                            DepartamentId = 4,
                             LastName = "Фамилия 10",
                             Name = "Имя 10",
                             Patronymic = "Отчество 10"
@@ -210,8 +214,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 11,
-                            Birthday = new DateTime(1988, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(8904),
-                            DepartamentId = 5,
+                            Birthday = new DateTime(1999, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8813),
+                            DepartamentId = 6,
                             LastName = "Фамилия 11",
                             Name = "Имя 11",
                             Patronymic = "Отчество 11"
@@ -219,8 +223,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 12,
-                            Birthday = new DateTime(2001, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(8908),
-                            DepartamentId = 8,
+                            Birthday = new DateTime(1997, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8818),
+                            DepartamentId = 7,
                             LastName = "Фамилия 12",
                             Name = "Имя 12",
                             Patronymic = "Отчество 12"
@@ -228,8 +232,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 13,
-                            Birthday = new DateTime(1997, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(8913),
-                            DepartamentId = 4,
+                            Birthday = new DateTime(1987, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8822),
+                            DepartamentId = 9,
                             LastName = "Фамилия 13",
                             Name = "Имя 13",
                             Patronymic = "Отчество 13"
@@ -237,8 +241,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 14,
-                            Birthday = new DateTime(1991, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(8917),
-                            DepartamentId = 6,
+                            Birthday = new DateTime(1989, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8826),
+                            DepartamentId = 2,
                             LastName = "Фамилия 14",
                             Name = "Имя 14",
                             Patronymic = "Отчество 14"
@@ -246,8 +250,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 15,
-                            Birthday = new DateTime(2000, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(8921),
-                            DepartamentId = 7,
+                            Birthday = new DateTime(1994, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8830),
+                            DepartamentId = 1,
                             LastName = "Фамилия 15",
                             Name = "Имя 15",
                             Patronymic = "Отчество 15"
@@ -255,8 +259,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 16,
-                            Birthday = new DateTime(1994, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(8925),
-                            DepartamentId = 5,
+                            Birthday = new DateTime(2002, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8835),
+                            DepartamentId = 3,
                             LastName = "Фамилия 16",
                             Name = "Имя 16",
                             Patronymic = "Отчество 16"
@@ -264,8 +268,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 17,
-                            Birthday = new DateTime(1996, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(8929),
-                            DepartamentId = 10,
+                            Birthday = new DateTime(1988, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8838),
+                            DepartamentId = 4,
                             LastName = "Фамилия 17",
                             Name = "Имя 17",
                             Patronymic = "Отчество 17"
@@ -273,8 +277,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 18,
-                            Birthday = new DateTime(1988, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(8934),
-                            DepartamentId = 8,
+                            Birthday = new DateTime(1996, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8843),
+                            DepartamentId = 2,
                             LastName = "Фамилия 18",
                             Name = "Имя 18",
                             Patronymic = "Отчество 18"
@@ -282,8 +286,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 19,
-                            Birthday = new DateTime(1995, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(8938),
-                            DepartamentId = 3,
+                            Birthday = new DateTime(1992, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8847),
+                            DepartamentId = 10,
                             LastName = "Фамилия 19",
                             Name = "Имя 19",
                             Patronymic = "Отчество 19"
@@ -291,8 +295,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 20,
-                            Birthday = new DateTime(1996, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9002),
-                            DepartamentId = 1,
+                            Birthday = new DateTime(1995, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8852),
+                            DepartamentId = 3,
                             LastName = "Фамилия 20",
                             Name = "Имя 20",
                             Patronymic = "Отчество 20"
@@ -300,8 +304,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 21,
-                            Birthday = new DateTime(2001, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9007),
-                            DepartamentId = 3,
+                            Birthday = new DateTime(1995, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8856),
+                            DepartamentId = 1,
                             LastName = "Фамилия 21",
                             Name = "Имя 21",
                             Patronymic = "Отчество 21"
@@ -309,8 +313,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 22,
-                            Birthday = new DateTime(2001, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9011),
-                            DepartamentId = 1,
+                            Birthday = new DateTime(1999, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8860),
+                            DepartamentId = 3,
                             LastName = "Фамилия 22",
                             Name = "Имя 22",
                             Patronymic = "Отчество 22"
@@ -318,7 +322,7 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 23,
-                            Birthday = new DateTime(1990, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9015),
+                            Birthday = new DateTime(1988, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8864),
                             DepartamentId = 9,
                             LastName = "Фамилия 23",
                             Name = "Имя 23",
@@ -327,8 +331,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 24,
-                            Birthday = new DateTime(1987, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9019),
-                            DepartamentId = 1,
+                            Birthday = new DateTime(1994, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8869),
+                            DepartamentId = 7,
                             LastName = "Фамилия 24",
                             Name = "Имя 24",
                             Patronymic = "Отчество 24"
@@ -336,8 +340,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 25,
-                            Birthday = new DateTime(1989, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9024),
-                            DepartamentId = 7,
+                            Birthday = new DateTime(2002, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8873),
+                            DepartamentId = 10,
                             LastName = "Фамилия 25",
                             Name = "Имя 25",
                             Patronymic = "Отчество 25"
@@ -345,8 +349,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 26,
-                            Birthday = new DateTime(1999, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9028),
-                            DepartamentId = 10,
+                            Birthday = new DateTime(1994, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8932),
+                            DepartamentId = 5,
                             LastName = "Фамилия 26",
                             Name = "Имя 26",
                             Patronymic = "Отчество 26"
@@ -354,8 +358,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 27,
-                            Birthday = new DateTime(1995, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9032),
-                            DepartamentId = 2,
+                            Birthday = new DateTime(1992, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8937),
+                            DepartamentId = 7,
                             LastName = "Фамилия 27",
                             Name = "Имя 27",
                             Patronymic = "Отчество 27"
@@ -363,8 +367,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 28,
-                            Birthday = new DateTime(1997, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9036),
-                            DepartamentId = 7,
+                            Birthday = new DateTime(1991, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8941),
+                            DepartamentId = 1,
                             LastName = "Фамилия 28",
                             Name = "Имя 28",
                             Patronymic = "Отчество 28"
@@ -372,8 +376,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 29,
-                            Birthday = new DateTime(1997, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9040),
-                            DepartamentId = 2,
+                            Birthday = new DateTime(1995, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8945),
+                            DepartamentId = 10,
                             LastName = "Фамилия 29",
                             Name = "Имя 29",
                             Patronymic = "Отчество 29"
@@ -381,8 +385,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 30,
-                            Birthday = new DateTime(1996, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9044),
-                            DepartamentId = 7,
+                            Birthday = new DateTime(1993, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8949),
+                            DepartamentId = 10,
                             LastName = "Фамилия 30",
                             Name = "Имя 30",
                             Patronymic = "Отчество 30"
@@ -390,8 +394,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 31,
-                            Birthday = new DateTime(2000, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9049),
-                            DepartamentId = 5,
+                            Birthday = new DateTime(1990, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8953),
+                            DepartamentId = 7,
                             LastName = "Фамилия 31",
                             Name = "Имя 31",
                             Patronymic = "Отчество 31"
@@ -399,8 +403,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 32,
-                            Birthday = new DateTime(1992, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9053),
-                            DepartamentId = 2,
+                            Birthday = new DateTime(2001, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8957),
+                            DepartamentId = 6,
                             LastName = "Фамилия 32",
                             Name = "Имя 32",
                             Patronymic = "Отчество 32"
@@ -408,8 +412,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 33,
-                            Birthday = new DateTime(2000, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9057),
-                            DepartamentId = 9,
+                            Birthday = new DateTime(1999, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8962),
+                            DepartamentId = 10,
                             LastName = "Фамилия 33",
                             Name = "Имя 33",
                             Patronymic = "Отчество 33"
@@ -417,8 +421,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 34,
-                            Birthday = new DateTime(1989, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9061),
-                            DepartamentId = 8,
+                            Birthday = new DateTime(1998, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8966),
+                            DepartamentId = 5,
                             LastName = "Фамилия 34",
                             Name = "Имя 34",
                             Patronymic = "Отчество 34"
@@ -426,8 +430,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 35,
-                            Birthday = new DateTime(2002, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9066),
-                            DepartamentId = 5,
+                            Birthday = new DateTime(1993, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8970),
+                            DepartamentId = 10,
                             LastName = "Фамилия 35",
                             Name = "Имя 35",
                             Patronymic = "Отчество 35"
@@ -435,8 +439,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 36,
-                            Birthday = new DateTime(1998, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9070),
-                            DepartamentId = 7,
+                            Birthday = new DateTime(1990, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8974),
+                            DepartamentId = 2,
                             LastName = "Фамилия 36",
                             Name = "Имя 36",
                             Patronymic = "Отчество 36"
@@ -444,8 +448,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 37,
-                            Birthday = new DateTime(1990, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9074),
-                            DepartamentId = 1,
+                            Birthday = new DateTime(1997, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8978),
+                            DepartamentId = 8,
                             LastName = "Фамилия 37",
                             Name = "Имя 37",
                             Patronymic = "Отчество 37"
@@ -453,8 +457,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 38,
-                            Birthday = new DateTime(2002, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9078),
-                            DepartamentId = 8,
+                            Birthday = new DateTime(1989, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8982),
+                            DepartamentId = 3,
                             LastName = "Фамилия 38",
                             Name = "Имя 38",
                             Patronymic = "Отчество 38"
@@ -462,7 +466,7 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 39,
-                            Birthday = new DateTime(1997, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9082),
+                            Birthday = new DateTime(1998, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8986),
                             DepartamentId = 2,
                             LastName = "Фамилия 39",
                             Name = "Имя 39",
@@ -471,8 +475,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 40,
-                            Birthday = new DateTime(1988, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9086),
-                            DepartamentId = 5,
+                            Birthday = new DateTime(1990, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8991),
+                            DepartamentId = 2,
                             LastName = "Фамилия 40",
                             Name = "Имя 40",
                             Patronymic = "Отчество 40"
@@ -480,8 +484,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 41,
-                            Birthday = new DateTime(1998, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9091),
-                            DepartamentId = 7,
+                            Birthday = new DateTime(1999, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8995),
+                            DepartamentId = 3,
                             LastName = "Фамилия 41",
                             Name = "Имя 41",
                             Patronymic = "Отчество 41"
@@ -489,7 +493,7 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 42,
-                            Birthday = new DateTime(1992, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9095),
+                            Birthday = new DateTime(2002, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(8999),
                             DepartamentId = 6,
                             LastName = "Фамилия 42",
                             Name = "Имя 42",
@@ -498,8 +502,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 43,
-                            Birthday = new DateTime(1997, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9099),
-                            DepartamentId = 7,
+                            Birthday = new DateTime(1995, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9003),
+                            DepartamentId = 6,
                             LastName = "Фамилия 43",
                             Name = "Имя 43",
                             Patronymic = "Отчество 43"
@@ -507,7 +511,7 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 44,
-                            Birthday = new DateTime(1987, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9104),
+                            Birthday = new DateTime(1993, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9007),
                             DepartamentId = 3,
                             LastName = "Фамилия 44",
                             Name = "Имя 44",
@@ -516,8 +520,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 45,
-                            Birthday = new DateTime(1994, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9108),
-                            DepartamentId = 3,
+                            Birthday = new DateTime(1993, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9012),
+                            DepartamentId = 4,
                             LastName = "Фамилия 45",
                             Name = "Имя 45",
                             Patronymic = "Отчество 45"
@@ -525,8 +529,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 46,
-                            Birthday = new DateTime(1998, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9112),
-                            DepartamentId = 3,
+                            Birthday = new DateTime(1992, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9016),
+                            DepartamentId = 8,
                             LastName = "Фамилия 46",
                             Name = "Имя 46",
                             Patronymic = "Отчество 46"
@@ -534,8 +538,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 47,
-                            Birthday = new DateTime(1990, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9116),
-                            DepartamentId = 8,
+                            Birthday = new DateTime(1998, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9020),
+                            DepartamentId = 6,
                             LastName = "Фамилия 47",
                             Name = "Имя 47",
                             Patronymic = "Отчество 47"
@@ -543,8 +547,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 48,
-                            Birthday = new DateTime(1988, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9120),
-                            DepartamentId = 7,
+                            Birthday = new DateTime(1996, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9024),
+                            DepartamentId = 9,
                             LastName = "Фамилия 48",
                             Name = "Имя 48",
                             Patronymic = "Отчество 48"
@@ -552,8 +556,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 49,
-                            Birthday = new DateTime(1995, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9190),
-                            DepartamentId = 1,
+                            Birthday = new DateTime(1989, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9029),
+                            DepartamentId = 7,
                             LastName = "Фамилия 49",
                             Name = "Имя 49",
                             Patronymic = "Отчество 49"
@@ -561,7 +565,7 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 50,
-                            Birthday = new DateTime(1990, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9195),
+                            Birthday = new DateTime(1988, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9033),
                             DepartamentId = 10,
                             LastName = "Фамилия 50",
                             Name = "Имя 50",
@@ -570,8 +574,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 51,
-                            Birthday = new DateTime(2003, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9199),
-                            DepartamentId = 3,
+                            Birthday = new DateTime(1994, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9037),
+                            DepartamentId = 2,
                             LastName = "Фамилия 51",
                             Name = "Имя 51",
                             Patronymic = "Отчество 51"
@@ -579,8 +583,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 52,
-                            Birthday = new DateTime(1987, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9203),
-                            DepartamentId = 5,
+                            Birthday = new DateTime(1987, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9041),
+                            DepartamentId = 2,
                             LastName = "Фамилия 52",
                             Name = "Имя 52",
                             Patronymic = "Отчество 52"
@@ -588,8 +592,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 53,
-                            Birthday = new DateTime(1998, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9207),
-                            DepartamentId = 6,
+                            Birthday = new DateTime(2000, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9045),
+                            DepartamentId = 5,
                             LastName = "Фамилия 53",
                             Name = "Имя 53",
                             Patronymic = "Отчество 53"
@@ -597,8 +601,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 54,
-                            Birthday = new DateTime(2001, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9211),
-                            DepartamentId = 5,
+                            Birthday = new DateTime(2001, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9050),
+                            DepartamentId = 9,
                             LastName = "Фамилия 54",
                             Name = "Имя 54",
                             Patronymic = "Отчество 54"
@@ -606,8 +610,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 55,
-                            Birthday = new DateTime(2002, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9215),
-                            DepartamentId = 7,
+                            Birthday = new DateTime(1990, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9091),
+                            DepartamentId = 6,
                             LastName = "Фамилия 55",
                             Name = "Имя 55",
                             Patronymic = "Отчество 55"
@@ -615,8 +619,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 56,
-                            Birthday = new DateTime(1998, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9219),
-                            DepartamentId = 3,
+                            Birthday = new DateTime(1991, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9095),
+                            DepartamentId = 4,
                             LastName = "Фамилия 56",
                             Name = "Имя 56",
                             Patronymic = "Отчество 56"
@@ -624,8 +628,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 57,
-                            Birthday = new DateTime(1999, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9224),
-                            DepartamentId = 10,
+                            Birthday = new DateTime(2001, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9099),
+                            DepartamentId = 5,
                             LastName = "Фамилия 57",
                             Name = "Имя 57",
                             Patronymic = "Отчество 57"
@@ -633,7 +637,7 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 58,
-                            Birthday = new DateTime(1997, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9228),
+                            Birthday = new DateTime(1992, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9103),
                             DepartamentId = 6,
                             LastName = "Фамилия 58",
                             Name = "Имя 58",
@@ -642,8 +646,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 59,
-                            Birthday = new DateTime(1990, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9232),
-                            DepartamentId = 2,
+                            Birthday = new DateTime(1994, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9108),
+                            DepartamentId = 6,
                             LastName = "Фамилия 59",
                             Name = "Имя 59",
                             Patronymic = "Отчество 59"
@@ -651,8 +655,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 60,
-                            Birthday = new DateTime(1991, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9236),
-                            DepartamentId = 6,
+                            Birthday = new DateTime(2003, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9112),
+                            DepartamentId = 8,
                             LastName = "Фамилия 60",
                             Name = "Имя 60",
                             Patronymic = "Отчество 60"
@@ -660,8 +664,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 61,
-                            Birthday = new DateTime(1988, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9240),
-                            DepartamentId = 7,
+                            Birthday = new DateTime(1997, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9116),
+                            DepartamentId = 1,
                             LastName = "Фамилия 61",
                             Name = "Имя 61",
                             Patronymic = "Отчество 61"
@@ -669,8 +673,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 62,
-                            Birthday = new DateTime(2000, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9245),
-                            DepartamentId = 9,
+                            Birthday = new DateTime(1991, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9120),
+                            DepartamentId = 3,
                             LastName = "Фамилия 62",
                             Name = "Имя 62",
                             Patronymic = "Отчество 62"
@@ -678,8 +682,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 63,
-                            Birthday = new DateTime(2002, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9249),
-                            DepartamentId = 1,
+                            Birthday = new DateTime(1998, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9124),
+                            DepartamentId = 10,
                             LastName = "Фамилия 63",
                             Name = "Имя 63",
                             Patronymic = "Отчество 63"
@@ -687,8 +691,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 64,
-                            Birthday = new DateTime(1988, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9253),
-                            DepartamentId = 1,
+                            Birthday = new DateTime(1989, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9128),
+                            DepartamentId = 8,
                             LastName = "Фамилия 64",
                             Name = "Имя 64",
                             Patronymic = "Отчество 64"
@@ -696,8 +700,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 65,
-                            Birthday = new DateTime(2001, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9257),
-                            DepartamentId = 4,
+                            Birthday = new DateTime(1998, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9133),
+                            DepartamentId = 1,
                             LastName = "Фамилия 65",
                             Name = "Имя 65",
                             Patronymic = "Отчество 65"
@@ -705,8 +709,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 66,
-                            Birthday = new DateTime(2000, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9262),
-                            DepartamentId = 4,
+                            Birthday = new DateTime(1998, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9137),
+                            DepartamentId = 7,
                             LastName = "Фамилия 66",
                             Name = "Имя 66",
                             Patronymic = "Отчество 66"
@@ -714,8 +718,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 67,
-                            Birthday = new DateTime(1999, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9266),
-                            DepartamentId = 10,
+                            Birthday = new DateTime(1999, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9141),
+                            DepartamentId = 9,
                             LastName = "Фамилия 67",
                             Name = "Имя 67",
                             Patronymic = "Отчество 67"
@@ -723,7 +727,7 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 68,
-                            Birthday = new DateTime(1996, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9270),
+                            Birthday = new DateTime(1993, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9145),
                             DepartamentId = 1,
                             LastName = "Фамилия 68",
                             Name = "Имя 68",
@@ -732,8 +736,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 69,
-                            Birthday = new DateTime(1991, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9274),
-                            DepartamentId = 3,
+                            Birthday = new DateTime(1998, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9149),
+                            DepartamentId = 10,
                             LastName = "Фамилия 69",
                             Name = "Имя 69",
                             Patronymic = "Отчество 69"
@@ -741,8 +745,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 70,
-                            Birthday = new DateTime(1999, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9278),
-                            DepartamentId = 8,
+                            Birthday = new DateTime(1997, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9153),
+                            DepartamentId = 1,
                             LastName = "Фамилия 70",
                             Name = "Имя 70",
                             Patronymic = "Отчество 70"
@@ -750,8 +754,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 71,
-                            Birthday = new DateTime(1995, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9282),
-                            DepartamentId = 5,
+                            Birthday = new DateTime(1996, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9158),
+                            DepartamentId = 8,
                             LastName = "Фамилия 71",
                             Name = "Имя 71",
                             Patronymic = "Отчество 71"
@@ -759,8 +763,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 72,
-                            Birthday = new DateTime(2001, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9286),
-                            DepartamentId = 9,
+                            Birthday = new DateTime(1995, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9162),
+                            DepartamentId = 2,
                             LastName = "Фамилия 72",
                             Name = "Имя 72",
                             Patronymic = "Отчество 72"
@@ -768,8 +772,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 73,
-                            Birthday = new DateTime(1988, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9290),
-                            DepartamentId = 1,
+                            Birthday = new DateTime(1992, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9166),
+                            DepartamentId = 4,
                             LastName = "Фамилия 73",
                             Name = "Имя 73",
                             Patronymic = "Отчество 73"
@@ -777,8 +781,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 74,
-                            Birthday = new DateTime(2003, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9295),
-                            DepartamentId = 8,
+                            Birthday = new DateTime(1993, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9171),
+                            DepartamentId = 9,
                             LastName = "Фамилия 74",
                             Name = "Имя 74",
                             Patronymic = "Отчество 74"
@@ -786,8 +790,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 75,
-                            Birthday = new DateTime(1997, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9299),
-                            DepartamentId = 4,
+                            Birthday = new DateTime(1988, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9175),
+                            DepartamentId = 10,
                             LastName = "Фамилия 75",
                             Name = "Имя 75",
                             Patronymic = "Отчество 75"
@@ -795,7 +799,7 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 76,
-                            Birthday = new DateTime(1989, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9303),
+                            Birthday = new DateTime(1999, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9179),
                             DepartamentId = 4,
                             LastName = "Фамилия 76",
                             Name = "Имя 76",
@@ -804,7 +808,7 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 77,
-                            Birthday = new DateTime(1999, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9307),
+                            Birthday = new DateTime(1992, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9183),
                             DepartamentId = 3,
                             LastName = "Фамилия 77",
                             Name = "Имя 77",
@@ -813,7 +817,7 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 78,
-                            Birthday = new DateTime(2003, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9348),
+                            Birthday = new DateTime(1994, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9188),
                             DepartamentId = 5,
                             LastName = "Фамилия 78",
                             Name = "Имя 78",
@@ -822,8 +826,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 79,
-                            Birthday = new DateTime(2003, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9352),
-                            DepartamentId = 2,
+                            Birthday = new DateTime(1997, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9192),
+                            DepartamentId = 8,
                             LastName = "Фамилия 79",
                             Name = "Имя 79",
                             Patronymic = "Отчество 79"
@@ -831,8 +835,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 80,
-                            Birthday = new DateTime(1998, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9356),
-                            DepartamentId = 4,
+                            Birthday = new DateTime(1990, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9196),
+                            DepartamentId = 3,
                             LastName = "Фамилия 80",
                             Name = "Имя 80",
                             Patronymic = "Отчество 80"
@@ -840,8 +844,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 81,
-                            Birthday = new DateTime(1991, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9360),
-                            DepartamentId = 1,
+                            Birthday = new DateTime(1994, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9200),
+                            DepartamentId = 4,
                             LastName = "Фамилия 81",
                             Name = "Имя 81",
                             Patronymic = "Отчество 81"
@@ -849,8 +853,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 82,
-                            Birthday = new DateTime(1997, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9365),
-                            DepartamentId = 7,
+                            Birthday = new DateTime(1994, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9204),
+                            DepartamentId = 8,
                             LastName = "Фамилия 82",
                             Name = "Имя 82",
                             Patronymic = "Отчество 82"
@@ -858,8 +862,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 83,
-                            Birthday = new DateTime(1995, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9369),
-                            DepartamentId = 10,
+                            Birthday = new DateTime(2000, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9208),
+                            DepartamentId = 1,
                             LastName = "Фамилия 83",
                             Name = "Имя 83",
                             Patronymic = "Отчество 83"
@@ -867,7 +871,7 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 84,
-                            Birthday = new DateTime(1987, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9373),
+                            Birthday = new DateTime(2003, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9249),
                             DepartamentId = 3,
                             LastName = "Фамилия 84",
                             Name = "Имя 84",
@@ -876,8 +880,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 85,
-                            Birthday = new DateTime(1994, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9377),
-                            DepartamentId = 3,
+                            Birthday = new DateTime(1989, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9253),
+                            DepartamentId = 6,
                             LastName = "Фамилия 85",
                             Name = "Имя 85",
                             Patronymic = "Отчество 85"
@@ -885,8 +889,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 86,
-                            Birthday = new DateTime(1989, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9381),
-                            DepartamentId = 6,
+                            Birthday = new DateTime(2000, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9257),
+                            DepartamentId = 7,
                             LastName = "Фамилия 86",
                             Name = "Имя 86",
                             Patronymic = "Отчество 86"
@@ -894,7 +898,7 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 87,
-                            Birthday = new DateTime(1988, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9385),
+                            Birthday = new DateTime(2001, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9262),
                             DepartamentId = 10,
                             LastName = "Фамилия 87",
                             Name = "Имя 87",
@@ -903,8 +907,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 88,
-                            Birthday = new DateTime(2003, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9390),
-                            DepartamentId = 5,
+                            Birthday = new DateTime(1999, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9266),
+                            DepartamentId = 7,
                             LastName = "Фамилия 88",
                             Name = "Имя 88",
                             Patronymic = "Отчество 88"
@@ -912,8 +916,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 89,
-                            Birthday = new DateTime(1996, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9394),
-                            DepartamentId = 4,
+                            Birthday = new DateTime(1994, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9270),
+                            DepartamentId = 7,
                             LastName = "Фамилия 89",
                             Name = "Имя 89",
                             Patronymic = "Отчество 89"
@@ -921,8 +925,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 90,
-                            Birthday = new DateTime(1988, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9398),
-                            DepartamentId = 1,
+                            Birthday = new DateTime(1993, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9274),
+                            DepartamentId = 10,
                             LastName = "Фамилия 90",
                             Name = "Имя 90",
                             Patronymic = "Отчество 90"
@@ -930,8 +934,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 91,
-                            Birthday = new DateTime(2003, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9402),
-                            DepartamentId = 1,
+                            Birthday = new DateTime(1997, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9278),
+                            DepartamentId = 10,
                             LastName = "Фамилия 91",
                             Name = "Имя 91",
                             Patronymic = "Отчество 91"
@@ -939,8 +943,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 92,
-                            Birthday = new DateTime(1992, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9406),
-                            DepartamentId = 8,
+                            Birthday = new DateTime(1989, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9282),
+                            DepartamentId = 4,
                             LastName = "Фамилия 92",
                             Name = "Имя 92",
                             Patronymic = "Отчество 92"
@@ -948,8 +952,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 93,
-                            Birthday = new DateTime(1995, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9411),
-                            DepartamentId = 9,
+                            Birthday = new DateTime(1991, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9287),
+                            DepartamentId = 1,
                             LastName = "Фамилия 93",
                             Name = "Имя 93",
                             Patronymic = "Отчество 93"
@@ -957,7 +961,7 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 94,
-                            Birthday = new DateTime(2002, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9415),
+                            Birthday = new DateTime(1987, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9291),
                             DepartamentId = 1,
                             LastName = "Фамилия 94",
                             Name = "Имя 94",
@@ -966,8 +970,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 95,
-                            Birthday = new DateTime(1988, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9419),
-                            DepartamentId = 1,
+                            Birthday = new DateTime(1998, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9295),
+                            DepartamentId = 2,
                             LastName = "Фамилия 95",
                             Name = "Имя 95",
                             Patronymic = "Отчество 95"
@@ -975,8 +979,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 96,
-                            Birthday = new DateTime(2003, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9423),
-                            DepartamentId = 7,
+                            Birthday = new DateTime(1992, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9299),
+                            DepartamentId = 6,
                             LastName = "Фамилия 96",
                             Name = "Имя 96",
                             Patronymic = "Отчество 96"
@@ -984,8 +988,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 97,
-                            Birthday = new DateTime(1988, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9427),
-                            DepartamentId = 10,
+                            Birthday = new DateTime(2000, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9303),
+                            DepartamentId = 2,
                             LastName = "Фамилия 97",
                             Name = "Имя 97",
                             Patronymic = "Отчество 97"
@@ -993,8 +997,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 98,
-                            Birthday = new DateTime(2002, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9431),
-                            DepartamentId = 5,
+                            Birthday = new DateTime(1995, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9307),
+                            DepartamentId = 2,
                             LastName = "Фамилия 98",
                             Name = "Имя 98",
                             Patronymic = "Отчество 98"
@@ -1002,8 +1006,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 99,
-                            Birthday = new DateTime(2002, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9435),
-                            DepartamentId = 5,
+                            Birthday = new DateTime(2001, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9312),
+                            DepartamentId = 7,
                             LastName = "Фамилия 99",
                             Name = "Имя 99",
                             Patronymic = "Отчество 99"
@@ -1011,8 +1015,8 @@ namespace ReflectionEditDialog.Data.Migrations
                         new
                         {
                             Id = 100,
-                            Birthday = new DateTime(1997, 2, 21, 12, 11, 28, 320, DateTimeKind.Local).AddTicks(9440),
-                            DepartamentId = 10,
+                            Birthday = new DateTime(1987, 2, 21, 12, 42, 2, 741, DateTimeKind.Local).AddTicks(9317),
+                            DepartamentId = 6,
                             LastName = "Фамилия 100",
                             Name = "Имя 100",
                             Patronymic = "Отчество 100"

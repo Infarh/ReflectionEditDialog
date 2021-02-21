@@ -24,6 +24,11 @@ namespace ReflectionEditDialog.Data.Context
                .Select(i => new Departament { Id = i, Name = $"Отдел {i}" })
                .ToArray();
 
+            model.Entity<Departament>().HasIndex(d => d.Name);
+            model.Entity<Departament>()
+               .HasMany(d => d.Employees)
+               .WithOne(e => e.Departament)
+               .OnDelete(DeleteBehavior.Cascade);
             model.Entity<Departament>().HasData(deps);
 
             var rnd = new Random();
@@ -39,6 +44,7 @@ namespace ReflectionEditDialog.Data.Context
                })
                .ToArray();
 
+            model.Entity<Employee>().HasIndex(empl => new { empl.Name, empl.LastName, empl.Patronymic, empl.Birthday });
             model.Entity<Employee>().HasData(empls);
 
         }

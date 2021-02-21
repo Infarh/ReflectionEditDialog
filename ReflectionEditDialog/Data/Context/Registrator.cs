@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using ReflectionEditDialog.Infrastructure.Servcies;
-using ReflectionEditDialog.Infrastructure.Servcies.Interfaces;
+using ReflectionEditDialog.Infrastructure.Services;
+using ReflectionEditDialog.Infrastructure.Services.Interfaces;
 
 namespace ReflectionEditDialog.Data.Context
 {
