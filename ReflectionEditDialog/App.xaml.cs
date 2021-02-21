@@ -4,6 +4,7 @@ using System.Windows;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ReflectionEditDialog.Infrastructure.Services;
 using ReflectionEditDialog.ViewModels;
 
 namespace ReflectionEditDialog
@@ -23,12 +24,13 @@ namespace ReflectionEditDialog
         public static IServiceProvider Services => Hosting.Services;
 
         public static IHostBuilder CreateHostBuilder(string[] args) => Host.CreateDefaultBuilder(args)
-           .ConfigureAppConfiguration(opt => opt.AddJsonFile("appsettings.json", false, true))
+           .ConfigureAppConfiguration(opt => opt.AddJsonFile("appsettings.json", true, true))
            .ConfigureServices(ConfigureServices);
 
         private static void ConfigureServices(HostBuilderContext host, IServiceCollection services)
         {
             services.AddViewModels();
+            services.AddServices();
         }
 
         protected override async void OnStartup(StartupEventArgs e)
