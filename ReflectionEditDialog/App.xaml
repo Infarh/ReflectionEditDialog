@@ -7,6 +7,7 @@
     <Application.Resources>
          <ResourceDictionary>
              <ResourceDictionary.MergedDictionaries>
+                 <ResourceDictionary Source="../Infrastructure/Converters/AppConverters.xaml"/>
                  <ResourceDictionary Source="../Infrastructure/Commands/AppCommands.xaml"/>
              </ResourceDictionary.MergedDictionaries>
 

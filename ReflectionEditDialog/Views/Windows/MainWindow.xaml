@@ -41,6 +41,7 @@
                                 <TextBlock Text="{Binding Name, StringFormat=Имя {0}}"/>
                                 <TextBlock Text="{Binding Patronymic, StringFormat=Отчество {0}}"/>
                                 <TextBlock Text="{Binding Birthday, StringFormat=Дата рождения {0:d}, ConverterCulture=ru-RU}"/>
+                                <TextBlock Text="{Binding Birthday, StringFormat=Возраст {0:d}, ConverterCulture=ru-RU, Converter={StaticResource AgeConverter}}"/>
                             </StackPanel>
                         </Border>
                     </DataTemplate>
