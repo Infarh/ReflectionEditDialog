@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace ReflectionEditDialog.Infrastructure.Base
+namespace ReflectionEditDialog.Infrastructure.Commands.Base
 {
     public abstract class Command : ICommand
     {

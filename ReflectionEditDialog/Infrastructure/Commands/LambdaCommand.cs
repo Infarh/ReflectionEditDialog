@@ -1,7 +1,7 @@
 ﻿using System;
-using ReflectionEditDialog.Infrastructure.Base;
+using ReflectionEditDialog.Infrastructure.Commands.Base;
 
-namespace ReflectionEditDialog.Infrastructure
+namespace ReflectionEditDialog.Infrastructure.Commands
 {
     public class LambdaCommand : Command
     {
