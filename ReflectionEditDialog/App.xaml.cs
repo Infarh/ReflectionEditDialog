@@ -4,6 +4,7 @@ using System.Windows;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ReflectionEditDialog.ViewModels;
 
 namespace ReflectionEditDialog
 {
@@ -27,7 +28,7 @@ namespace ReflectionEditDialog
 
         private static void ConfigureServices(HostBuilderContext host, IServiceCollection services)
         {
-
+            services.AddViewModels();
         }
 
         protected override async void OnStartup(StartupEventArgs e)
