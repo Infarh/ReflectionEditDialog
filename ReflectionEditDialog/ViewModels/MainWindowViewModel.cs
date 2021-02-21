@@ -45,6 +45,8 @@ namespace ReflectionEditDialog.ViewModels
         #endregion
 
 
+        #region LoadDataCommand
+
         private ICommand _LoadDataCommand;
 
         public ICommand LoadDataCommand => _LoadDataCommand
@@ -55,7 +57,75 @@ namespace ReflectionEditDialog.ViewModels
         private void OnLoadDataCommandExecuted(object p)
         {
             Departments = new ObservableCollection<Department>(TestData.Departments);
+        } 
+
+        #endregion
+
+        #region Command CreateEmployeeCommand - Создание нового сотрудника
+
+        /// <summary>Создание нового сотрудника</summary>
+        private ICommand _CreateEmployeeCommand;
+
+        /// <summary>Создание нового сотрудника</summary>
+        public ICommand CreateEmployeeCommand => _CreateEmployeeCommand
+            ??= new LambdaCommand(OnCreateEmployeeCommandExecuted, CanCreateEmployeeCommandExecute);
+
+        /// <summary>Проверка возможности выполнения - Создание нового сотрудника</summary>
+        private bool CanCreateEmployeeCommandExecute(object p) => true;
+
+        /// <summary>Логика выполнения - Создание нового сотрудника</summary>
+        private void OnCreateEmployeeCommandExecuted(object p)
+        {
+            
         }
+
+        #endregion
+
+        #region Command EditEmployeeCommand - Редактирование сотрудника
+
+        /// <summary>Редактирование сотрудника</summary>
+        private ICommand _EditEmployeeCommand;
+
+        /// <summary>Редактирование сотрудника</summary>
+        public ICommand EditEmployeeCommand => _EditEmployeeCommand
+            ??= new LambdaCommand(OnEditEmployeeCommandExecuted, CanEditEmployeeCommandExecute);
+
+        /// <summary>Проверка возможности выполнения - Редактирование сотрудника</summary>
+        private bool CanEditEmployeeCommandExecute(object p) => true;
+
+        /// <summary>Логика выполнения - Редактирование сотрудника</summary>
+        private void OnEditEmployeeCommandExecuted(object p)
+        {
+            
+        }
+
+        #endregion
+
+        #region Command RemoveEmployeeCommand - Удаление сотрудника
+
+        /// <summary>Удаление сотрудника</summary>
+        private ICommand _RemoveEmployeeCommand;
+
+        /// <summary>Удаление сотрудника</summary>
+        public ICommand RemoveEmployeeCommand => _RemoveEmployeeCommand
+            ??= new LambdaCommand(OnRemoveEmployeeCommandExecuted, CanRemoveEmployeeCommandExecute);
+
+        /// <summary>Проверка возможности выполнения - Удаление сотрудника</summary>
+        private bool CanRemoveEmployeeCommandExecute(object p) =>
+            p is Employee employee 
+            && SelectedDepartment != null 
+            && SelectedDepartment.Employees.Contains(employee);
+
+        /// <summary>Логика выполнения - Удаление сотрудника</summary>
+        private void OnRemoveEmployeeCommandExecuted(object p)
+        {
+            var dep = SelectedDepartment;
+            dep.Employees.Remove((Employee) p);
+            SelectedDepartment = null;
+            SelectedDepartment = dep;
+        }
+
+        #endregion
 
         public MainWindowViewModel(/* Сервис управления сотрудниками */)
         {

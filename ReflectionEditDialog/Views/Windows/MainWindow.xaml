@@ -49,7 +49,7 @@
                     </UniformGrid.Resources>
                     <Button Content="Добавить"/>
                     <Button Content="Редактировать"/>
-                    <Button Content="Удалить"/>
+                    <Button Content="Удалить" Command="{Binding RemoveEmployeeCommand}" CommandParameter="{Binding SelectedEmployee}"/>
                 </UniformGrid>
                 <ListBox ItemsSource="{Binding SelectedDepartment.Employees}" SelectedItem="{Binding SelectedEmployee}">
                     <ListBox.ItemContainerStyle>
@@ -69,7 +69,14 @@
                                     </StackPanel>
                                     <Button Content="X" HorizontalAlignment="Right" VerticalAlignment="Top" Padding="3,0"
                                             Background="Transparent" BorderThickness="0" Foreground="Red"
-                                            FontWeight="Bold"/>
+                                            FontWeight="Bold"
+                                            Command="{Binding DataContext.RemoveEmployeeCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                            CommandParameter="{Binding}"/>
+                                    <!--<Button Content="X" HorizontalAlignment="Right" VerticalAlignment="Top" Padding="3,0"
+                                            Background="Transparent" BorderThickness="0" Foreground="Red"
+                                            FontWeight="Bold"
+                                            Command="{Binding MainModel.RemoveEmployeeCommand, Source={StaticResource Locator}}"
+                                            CommandParameter="{Binding}"/>-->
                                 </Grid>
                             </Border>
                         </DataTemplate>
