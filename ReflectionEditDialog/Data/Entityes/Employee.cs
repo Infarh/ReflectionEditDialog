@@ -11,7 +11,7 @@ namespace ReflectionEditDialog.Data.Entityes
 
         public DateTime Birthday { get; set; }
 
-        public int DepartamentId { get; set; }
+        public int DepartmentId { get; set; }
 
         public Department Department { get; set; }
     }

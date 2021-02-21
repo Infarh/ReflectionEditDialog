@@ -40,7 +40,7 @@ namespace ReflectionEditDialog.Data.Context
                    LastName = $"Фамилия {i}",
                    Patronymic = $"Отчество {i}",
                    Birthday = DateTime.Now.AddYears(-rnd.Next(18, 35)),
-                   DepartamentId = deps[rnd.Next(0, deps.Length)].Id,
+                   DepartmentId = deps[rnd.Next(0, deps.Length)].Id,
                })
                .ToArray();
 

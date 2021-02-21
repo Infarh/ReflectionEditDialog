@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 using ReflectionEditDialog.Data.Entityes;
 using ReflectionEditDialog.Infrastructure.Commands;
@@ -21,23 +23,23 @@ namespace ReflectionEditDialog.ViewModels
 
         #endregion
 
-        #region Employees : ObservableCollection<Employee> - Сотрудники
-
-        /// <summary>Сотрудники</summary>
-        private ObservableCollection<Employee> _Employees;
-
-        /// <summary>Сотрудники</summary>
-        public ObservableCollection<Employee> Employees { get => _Employees; set => Set(ref _Employees, value); }
-
-        #endregion
-
         #region Departaments : ObservableCollection<Departament> - Отделы
 
         /// <summary>Отделы</summary>
         private ObservableCollection<Department> _Departments;
 
         /// <summary>Отделы</summary>
-        public ObservableCollection<Department> Departaments { get => _Departments; set => Set(ref _Departments, value); }
+        public ObservableCollection<Department> Departments { get => _Departments; set => Set(ref _Departments, value); }
+
+        #endregion
+
+        #region SelectedDepartment : Department - Выбранный отдел
+
+        /// <summary>Выбранный отдел</summary>
+        private Department _SelectedDepartment;
+
+        /// <summary>Выбранный отдел</summary>
+        public Department SelectedDepartment { get => _SelectedDepartment; set => Set(ref _SelectedDepartment, value); }
 
         #endregion
 
@@ -52,7 +54,7 @@ namespace ReflectionEditDialog.ViewModels
         /// <summary>Логика выполнения - Загрузка данных</summary>
         private void OnLoadDataCommandExecuted(object p)
         {
-            Employees = new ObservableCollection<Employee>(_EmployeesManager.Employees);
+            Departments = new ObservableCollection<Department>(_EmployeesManager.Departments);
         }
 
         #endregion

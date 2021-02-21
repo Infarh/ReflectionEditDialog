@@ -3,11 +3,49 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" mc:Ignorable="d"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:l="clr-namespace:ReflectionEditDialog"
+        xmlns:e="clr-namespace:ReflectionEditDialog.Data.Entityes"
         Title="{Binding Title}" 
         DataContext="{Binding MainModel, Source={StaticResource Locator}}"
         Width="800" Height="450">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadDataCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Grid.Column="0" Header="Отделы">
+            <DockPanel>
+                <ListBox ItemsSource="{Binding Departments}" 
+                         SelectedItem="{Binding SelectedDepartment}"
+                         DisplayMemberPath="Name"/>
+            </DockPanel>
+        </GroupBox>
+        <GroupBox Grid.Column="1" Header="{Binding SelectedDepartment.Name, StringFormat=Сотрудники {0}}">
+            <ListBox ItemsSource="{Binding SelectedDepartment.Employees}">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+                <ListBox.ItemTemplate>
+                    <DataTemplate DataType="e:Employee">
+                        <Border BorderBrush="LightGray" BorderThickness="1" Padding="5">
+                            <StackPanel>
+                                <TextBlock Text="{Binding LastName, StringFormat=Фамилия {0}}"/>
+                                <TextBlock Text="{Binding Name, StringFormat=Имя {0}}"/>
+                                <TextBlock Text="{Binding Patronymic, StringFormat=Отчество {0}}"/>
+                                <TextBlock Text="{Binding Birthday, StringFormat=Дата рождения {0:d}, ConverterCulture=ru-RU}"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </GroupBox>
     </Grid>
 </Window>
