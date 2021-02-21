@@ -21,32 +21,57 @@
         </Grid.ColumnDefinitions>
         <GroupBox Grid.Column="0" Header="Отделы">
             <DockPanel>
+                <UniformGrid DockPanel.Dock="Bottom" Margin="3,9" Rows="1">
+                    <UniformGrid.Resources>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Margin" Value="3,0"/>
+                        </Style>
+                    </UniformGrid.Resources>
+                    <Button Content="+"/>
+                    <Button Content="E"/>
+                    <Button Content="-"/>
+                </UniformGrid>
                 <ListBox ItemsSource="{Binding Departments}" 
                          SelectedItem="{Binding SelectedDepartment}"
                          DisplayMemberPath="Name"/>
             </DockPanel>
         </GroupBox>
-        <GroupBox Grid.Column="1" Header="{Binding SelectedDepartment.Name, StringFormat=Сотрудники {0}}">
-            <ListBox ItemsSource="{Binding SelectedDepartment.Employees}">
-                <ListBox.ItemContainerStyle>
-                    <Style TargetType="ListBoxItem">
-                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                    </Style>
-                </ListBox.ItemContainerStyle>
-                <ListBox.ItemTemplate>
-                    <DataTemplate DataType="e:Employee">
-                        <Border BorderBrush="LightGray" BorderThickness="1" Padding="5">
-                            <StackPanel>
-                                <TextBlock Text="{Binding LastName, StringFormat=Фамилия {0}}"/>
-                                <TextBlock Text="{Binding Name, StringFormat=Имя {0}}"/>
-                                <TextBlock Text="{Binding Patronymic, StringFormat=Отчество {0}}"/>
-                                <TextBlock Text="{Binding Birthday, StringFormat=Дата рождения {0:d}, ConverterCulture=ru-RU}"/>
-                                <TextBlock Text="{Binding Birthday, StringFormat=Возраст {0:d}, ConverterCulture=ru-RU, Converter={StaticResource AgeConverter}}"/>
-                            </StackPanel>
-                        </Border>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+        <GroupBox Grid.Column="1" Header="{Binding SelectedDepartment.Name, StringFormat=Сотрудники {0}, FallbackValue=Сотрудники, TargetNullValue=Сотрудники}">
+            <DockPanel>
+                <UniformGrid DockPanel.Dock="Bottom" HorizontalAlignment="Right" Rows="1" Margin="5">
+                    <UniformGrid.Resources>
+                        <Style TargetType="Button">
+                            <Setter Property="Margin" Value="5,0"/>
+                            <Setter Property="Padding" Value="15,5"/>
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Style>
+                    </UniformGrid.Resources>
+                    <Button Content="Добавить" Command="{Binding EditEmployeeCommand}"/>
+                    <Button Content="Редактировать" Command="{Binding EditEmployeeCommand}" CommandParameter="{Binding SelectedEmployee}"/>
+                    <Button Content="Удалить"/>
+                </UniformGrid>
+                <ListBox ItemsSource="{Binding SelectedDepartment.Employees}" SelectedItem="{Binding SelectedEmployee}">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate DataType="e:Employee">
+                            <Border BorderBrush="LightGray" BorderThickness="1" Padding="5">
+                                <StackPanel>
+                                    <TextBlock Text="{Binding LastName, StringFormat=Фамилия {0}}"/>
+                                    <TextBlock Text="{Binding Name, StringFormat=Имя {0}}"/>
+                                    <TextBlock Text="{Binding Patronymic, StringFormat=Отчество {0}}"/>
+                                    <TextBlock Text="{Binding Birthday, StringFormat=Дата рождения {0:d}, ConverterCulture=ru-RU}"/>
+                                    <TextBlock Text="{Binding Birthday, StringFormat=Возраст {0:d}, ConverterCulture=ru-RU, Converter={StaticResource AgeConverter}}"/>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </DockPanel>
         </GroupBox>
     </Grid>
 </Window>

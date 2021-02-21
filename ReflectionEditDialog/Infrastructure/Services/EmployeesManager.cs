@@ -48,5 +48,9 @@ namespace ReflectionEditDialog.Infrastructure.Services
             _Departments.Items.FirstOrDefault(d => d.Name == Name) is { } departament
                 ? departament
                 : _Departments.Add(new Department { Name = Name });
+
+        public bool Remove(Employee employee) => employee is null
+            ? throw new ArgumentNullException(nameof(employee))
+            : _Employees.Remove(employee.Id);
     }
 }

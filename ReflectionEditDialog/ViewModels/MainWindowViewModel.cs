@@ -40,6 +40,16 @@ namespace ReflectionEditDialog.ViewModels
 
         /// <summary>Выбранный отдел</summary>
         public Department SelectedDepartment { get => _SelectedDepartment; set => Set(ref _SelectedDepartment, value); }
+        
+        #endregion
+
+        #region SelectedEmployee : Employee - Выбранный сотрудник
+
+        /// <summary>Выбранный сотрудник</summary>
+        private Employee _SelectedEmployee;
+
+        /// <summary>Выбранный сотрудник</summary>
+        public Employee SelectedEmployee { get => _SelectedEmployee; set => Set(ref _SelectedEmployee, value); }
 
         #endregion
 
@@ -56,6 +66,34 @@ namespace ReflectionEditDialog.ViewModels
         {
             Departments = new ObservableCollection<Department>(_EmployeesManager.Departments);
         }
+
+        #endregion
+
+        #region Command EditEmployeeCommand - Редактировать сотрудника
+
+        /// <summary>Редактировать сотрудника</summary>
+        private ICommand _EditEmployeeCommand;
+
+        /// <summary>Редактировать сотрудника</summary>
+        public ICommand EditEmployeeCommand => _EditEmployeeCommand
+            ??= new LambdaCommand(OnEditEmployeeCommandExecuted, _ => SelectedDepartment != null);
+
+        /// <summary>Логика выполнения - Редактировать сотрудника</summary>
+        private void OnEditEmployeeCommandExecuted(object p)
+        {
+            var employee = p as Employee;
+        }
+
+        #endregion
+
+        #region Command DeleteEmployeeCommand - Удалить сотрудника
+
+        /// <summary>Удалить сотрудника</summary>
+        private ICommand _DeleteEmployeeCommand;
+
+        /// <summary>Удалить сотрудника</summary>
+        public ICommand DeleteEmployeeCommand => _DeleteEmployeeCommand
+            ??= new LambdaCommand(p => _EmployeesManager.Remove((Employee)p), p => p is Employee);
 
         #endregion
 
