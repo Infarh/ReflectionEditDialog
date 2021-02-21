@@ -1,4 +1,4 @@
-﻿namespace ReflectionEditDialog
+﻿namespace ReflectionEditDialog.Views.Windows
 {
     public partial class MainWindow
     {
