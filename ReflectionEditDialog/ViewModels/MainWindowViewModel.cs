@@ -65,7 +65,7 @@ namespace ReflectionEditDialog.ViewModels
         /// <summary>Логика выполнения - Загрузка данных</summary>
         private void OnLoadDataCommandExecuted(object p)
         {
-            Departments = new ObservableCollection<Department>(_EmployeesManager.Departments);
+            Departments = new ObservableCollection<Department>(_EmployeesManager.Departments.Items);
         }
 
         #endregion
@@ -84,7 +84,15 @@ namespace ReflectionEditDialog.ViewModels
         {
             var employee = p as Employee ?? new Employee();
 
-            _UserDialog.Edit(employee);
+            if (!_UserDialog.Edit(employee)) return;
+            if (p is null)
+            {
+                _EmployeesManager.Employees.Add(employee);
+            }
+            else
+            {
+                _EmployeesManager.Employees.Update(employee);
+            }
         }
 
         #endregion

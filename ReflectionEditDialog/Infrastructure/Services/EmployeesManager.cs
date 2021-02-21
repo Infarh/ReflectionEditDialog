@@ -9,17 +9,14 @@ namespace ReflectionEditDialog.Infrastructure.Services
 {
     internal class EmployeesManager : IEmployeesManager
     {
-        private readonly IRepository<Employee> _Employees;
-        private readonly IRepository<Department> _Departments;
+        public IRepository<Department> Departments { get; }
 
-        public IEnumerable<Department> Departments => _Departments.Items;
-
-        public IEnumerable<Employee> Employees => _Employees.Items;
+        public IRepository<Employee> Employees { get; }
 
         public EmployeesManager(IRepository<Employee> Employees, IRepository<Department> Departments)
         {
-            _Employees = Employees;
-            _Departments = Departments;
+            this.Employees = Employees;
+            this.Departments = Departments;
         }
 
         public Employee AddEmployee(string Name, string LastName, string Patronymic, DateTime Birthday, string Departament)
@@ -33,7 +30,7 @@ namespace ReflectionEditDialog.Infrastructure.Services
                 Department = AddDepartment(Departament)
             };
 
-            _Employees.Add(employee);
+            Employees.Add(employee);
 
             return employee;
         }
@@ -41,16 +38,16 @@ namespace ReflectionEditDialog.Infrastructure.Services
         public Employee ChangeDepartment(Employee employee, string Department)
         {
             employee.Department = AddDepartment(Department);
-            return _Employees.Update(employee);
+            return Employees.Update(employee);
         }
 
         public Department AddDepartment(string Name) =>
-            _Departments.Items.FirstOrDefault(d => d.Name == Name) is { } departament
+            Departments.Items.FirstOrDefault(d => d.Name == Name) is { } departament
                 ? departament
-                : _Departments.Add(new Department { Name = Name });
+                : Departments.Add(new Department { Name = Name });
 
         public bool Remove(Employee employee) => employee is null
             ? throw new ArgumentNullException(nameof(employee))
-            : _Employees.Remove(employee.Id);
+            : Employees.Remove(employee.Id);
     }
 }

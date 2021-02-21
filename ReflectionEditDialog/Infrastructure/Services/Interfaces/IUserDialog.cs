@@ -4,6 +4,6 @@ namespace ReflectionEditDialog.Infrastructure.Services.Interfaces
 {
     internal interface IUserDialog
     {
-        void Edit(Employee employee);
+        bool Edit(Employee employee);
     }
 }
