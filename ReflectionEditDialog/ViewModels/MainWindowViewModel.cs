@@ -101,10 +101,22 @@ namespace ReflectionEditDialog.ViewModels
         private void OnEditEmployeeCommandExecuted(object p)
         {
             var employee = (Employee)p;
+            var old_dep = employee.Department;
             if(_UserDialog.Edit(employee))
             {
                 // Сохранить employee в БД
                 // Обновить состояние интерфейса
+                SelectedDepartment = null;
+                SelectedEmployee = null;
+
+                SelectedDepartment = employee.Department;
+                SelectedEmployee = employee;
+
+                if(old_dep != employee.Department)
+                {
+                    old_dep.Employees.Remove(employee);
+                    employee.Department.Employees.Add(employee);
+                }
             }
             else
             {

@@ -67,7 +67,7 @@
             <TextBlock Grid.Column="0" Grid.Row="4" Text="Отдел:"/>
             <ComboBox Grid.Column="1" Grid.Row="4" 
                       SelectedItem="{Binding Department}" 
-                      ItemsSource="{Binding Department}"
+                      ItemsSource="{Binding Departments}"
                       DisplayMemberPath="Name"/>
 
         </Grid>

@@ -65,6 +65,7 @@
                                         <TextBlock Text="{Binding Name, StringFormat=Имя: {0}}"/>
                                         <TextBlock Text="{Binding Patronymic, StringFormat=Отчество: {0}}"/>
                                         <TextBlock Text="{Binding Birthday, StringFormat=Дата рождения: {0:d}, ConverterCulture=ru-RU}"/>
+                                        <TextBlock Text="{Binding Department.Name, StringFormat=Отдел: {0}}"/>
                                     </StackPanel>
                                     <Button Content="X" HorizontalAlignment="Right" VerticalAlignment="Top" Padding="3,0"
                                             Background="Transparent" BorderThickness="0" Foreground="Red"

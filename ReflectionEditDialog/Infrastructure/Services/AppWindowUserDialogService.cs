@@ -26,6 +26,11 @@ namespace ReflectionEditDialog.Infrastructure.Services
                 Owner = App.CurrentWindow,
                 WindowStartupLocation = WindowStartupLocation.CenterOwner
             };
+            view_model.Complete += (_, e) =>
+            {
+                view.DialogResult = e.Arg;
+                view.Close();
+            };
 
             return view.ShowDialog() ?? false;
         }
