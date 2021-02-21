@@ -4,6 +4,7 @@ using System.Windows;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ReflectionEditDialog.Data.Context;
 using ReflectionEditDialog.ViewModels;
 
 namespace ReflectionEditDialog
@@ -28,6 +29,7 @@ namespace ReflectionEditDialog
 
         private static void ConfigureServices(HostBuilderContext host, IServiceCollection services)
         {
+            services.AddDatabase(host.Configuration);
             services.AddViewModels();
         }
 
