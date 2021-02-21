@@ -24,6 +24,17 @@ namespace ReflectionEditDialog.ViewModels
 
         public ObservableCollection<Department> Departments { get => _Departments; set => Set(ref _Departments, value); }
 
+        #region SelectedDepartment : Department - Выбранный отдел
+
+        /// <summary>Выбранный отдел</summary>
+        private Department _SelectedDepartment;
+
+        /// <summary>Выбранный отдел</summary>
+        public Department SelectedDepartment { get => _SelectedDepartment; set => Set(ref _SelectedDepartment, value); }
+
+        #endregion
+
+
         private ICommand _LoadDataCommand;
 
         public ICommand LoadDataCommand => _LoadDataCommand
