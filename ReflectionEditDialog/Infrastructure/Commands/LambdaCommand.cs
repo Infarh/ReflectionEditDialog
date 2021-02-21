@@ -3,7 +3,7 @@ using ReflectionEditDialog.Infrastructure.Commands.Base;
 
 namespace ReflectionEditDialog.Infrastructure.Commands
 {
-    public class LambdaCommand : Command
+    internal class LambdaCommand : Command
     {
         private readonly Action<object> _Execute;
         private readonly Func<object, bool> _CanExecute;

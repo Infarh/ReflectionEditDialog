@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace ReflectionEditDialog.Infrastructure.Commands.Base
 {
-    public abstract class Command : ICommand
+    internal abstract class Command : ICommand
     {
         public event EventHandler CanExecuteChanged
         {
